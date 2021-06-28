@@ -1,0 +1,29 @@
+section {
+  margin-top: 20px;
+}
+th {
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center !important;
+}
+u {
+  color: red;
+  margin: 20px;
+}
+.cnt {
+  margin-left: 60px !important;
+}
+::ng-deep.mat-header-row{
+height: 30px !important;
+}
+.selected {
+  background-color: rgb(209, 211, 243);
+  & .plantable {
+    border: 1px solid black;
+    border-radius: 2px 2px;
+    -webkit-border-radius: 2px 2px;
+    -moz-border-radius: 2px 2px;
+    -ms-border-radius: 2px 2px;
+    -o-border-radius: 2px 2px;
+  }
+}

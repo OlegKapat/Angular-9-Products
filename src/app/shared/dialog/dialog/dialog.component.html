@@ -1,0 +1,32 @@
+<section>
+  <h2 mat-dialog-title>Detail selected item Id: {{ item["id"] }}</h2>
+  <mat-dialog-content class="mat-typography" fxLayout="column">
+    <mat-form-field>
+      <input matInput placeholder="Name" [formControl]="name" />
+    </mat-form-field>
+    <h3>Features</h3>
+    <mat-list
+      fxLayoutAlign="center center"
+      role="list"
+      *ngFor="let item of item['features']"
+    >
+      <mat-list-item role="listitem">{{ item }}</mat-list-item>
+    </mat-list>
+    <h3>Plans</h3>
+    <mat-list
+      fxLayoutAlign="center center"
+      role="list"
+      *ngFor="let item of item['plans']"
+    >
+      <mat-list-item role="listitem"
+        ><strong>{{ item.id }}</strong></mat-list-item
+      >
+      <mat-list-item role="listitem">{{ item.paymentInterval }}</mat-list-item>
+      <mat-list-item role="listitem">{{ item.priceCents }}</mat-list-item>
+      <mat-list-item role="listitem">{{ item.currency }}</mat-list-item>
+    </mat-list>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button color="primary" mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</section>

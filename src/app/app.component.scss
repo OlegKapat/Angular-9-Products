@@ -1,0 +1,14 @@
+ul li{
+  list-style: none;
+  display: inline;
+  margin-left: 20px;
+  float: right;
+  cursor: pointer;
+
+ }
+ul{
+ margin-left: 60%;
+}
+.active {
+  color: rgb(14, 37, 243);
+}

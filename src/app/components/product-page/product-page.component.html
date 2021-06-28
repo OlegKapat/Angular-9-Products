@@ -1,0 +1,78 @@
+<section>
+  <u> *table: Product&Product plan </u>
+  <div fxLayout="column">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.id }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="features">
+        <th mat-header-cell *matHeaderCellDef>Features</th>
+        <td mat-cell mat-cell *matCellDef="let element; let i = index">
+          <ul *ngFor="let item of element['features']">
+            <li>{{ item }}</li>
+          </ul>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="plans">
+        <th mat-header-cell *matHeaderCellDef>Plans</th>
+        <td mat-cell *matCellDef="let element">
+          <mat-table
+            [dataSource]="element['plans']"
+            fxLayout="column"
+            class="plantable"
+          >
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef>Id</th>
+              <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="paymentInterval">
+              <th mat-header-cell *matHeaderCellDef>PaymentInterval</th>
+              <mat-cell *matCellDef="let el">{{ el.paymentInterval }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="priceCents">
+              <th mat-header-cell *matHeaderCellDef>PriceCents</th>
+              <mat-cell class="cnt" *matCellDef="let el">{{
+                el.priceCents
+              }}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="currency">
+              <th mat-header-cell *matHeaderCellDef>Currency</th>
+              <mat-cell style="margin-right: -40px" *matCellDef="let el">{{
+                el.currency
+              }}</mat-cell>
+            </ng-container>
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumnsPlans"
+              fxLayoutAlign="space-around  center"
+            ></tr>
+            <mat-row
+              *matRowDef="let row; columns: displayedColumnsPlans"
+              fxLayoutAlign="space-around  center"
+            ></mat-row>
+          </mat-table>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="selectItem(row)"
+        [ngClass]="{ selected: row === selectedRow }"
+      ></tr>
+    </table>
+  </div>
+</section>

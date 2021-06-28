@@ -1,0 +1,138 @@
+h1{
+  text-align: center;
+  margin-top: 20px;
+  color: red;
+}
+.centerBike {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: 26px;
+  margin-left: -12px;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+}
+
+#loop {
+  height: 100px;
+  width: 100px;
+  border: #bb5f27 solid 4px;
+  border-radius: 200px;
+}
+
+#loop:before {
+  background: -moz-linear-gradient(left, rgba(187, 95, 39, 0) 0%, rgba(187, 95, 39, 1) 30%, rgba(187, 95, 39, 1) 70%, rgba(187, 95, 39, 0) 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(187, 95, 39, 0)), color-stop(30%, rgba(187, 95, 39, 1)), color-stop(70%, rgba(187, 95, 39, 1)), color-stop(100%, rgba(187, 95, 39, 0)));
+  background: -webkit-linear-gradient(left, rgba(187, 95, 39, 0) 0%, rgba(187, 95, 39, 1) 30%, rgba(187, 95, 39, 1) 70%, rgba(187, 95, 39, 0) 100%);
+  background: -o-linear-gradient(left, rgba(187, 95, 39, 0) 0%, rgba(187, 95, 39, 1) 30%, rgba(187, 95, 39, 1) 70%, rgba(187, 95, 39, 0) 100%);
+  background: -ms-linear-gradient(left, rgba(187, 95, 39, 0) 0%, rgba(187, 95, 39, 1) 30%, rgba(187, 95, 39, 1) 70%, rgba(187, 95, 39, 0) 100%);
+  background: linear-gradient(to right, rgba(187, 95, 39, 0) 0%, rgba(187, 95, 39, 1) 30%, rgba(187, 95, 39, 1) 70%, rgba(187, 95, 39, 0) 100%);
+  content: "";
+  display: block;
+  height: 4px;
+  left: -100px;
+  position: relative;
+  top: 100px;
+  width: 300px;
+}
+
+#bike-wrapper {
+  height: 108px;
+  width: 108px;
+  animation: drive 3s linear infinite;
+}
+
+#bike {
+  height: 24px;
+  width: 25px;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/133687/motorbike.png");
+}
+
+@keyframes drive {
+  0% {
+    margin-left: -364px;
+    opacity: 0;
+  }
+  33.33% {
+    transform: rotate(0deg);
+    margin-left: -50px;
+    opacity: 1;
+  }
+  66.66% {
+    transform: rotate(-360deg);
+    margin-left: -50px;
+    opacity: 1;
+  }
+  100% {
+    margin-left: 264px;
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+}
+
+$color: #fd7000;
+$size: 12px;
+$time: 1;
+.loader{
+  margin-top: 5%;
+}
+main {
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background:  #090707;
+}
+
+.dank-ass-loader {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   .row {
+      display: flex;
+   }
+}
+
+.arrow {
+   width: 0;
+   height: 0;
+   margin: 0 (-$size / 2);
+   border-left: $size solid transparent;
+   border-right: $size solid transparent;
+   border-bottom: ($size * 1.8) solid $color;
+   animation: blink $time + s infinite;
+   filter: drop-shadow(0 0 ($size * 1.5) $color);
+
+   &.down {
+      transform: rotate(180deg);
+   }
+
+   @for $i from 1 through 18 {
+      &.outer-#{$i} {
+         animation-delay: -($time / 18) * $i + s;
+      }
+   }
+
+   @for $i from 1 through 6 {
+      &.inner-#{$i} {
+         animation-delay: -($time / 6) * $i + s;
+      }
+   }
+}
+
+@keyframes blink {
+  0% { opacity: 0.1; }
+  30% { opacity: 1; }
+  100% { opacity: 0.1; }
+}
+
+
+
